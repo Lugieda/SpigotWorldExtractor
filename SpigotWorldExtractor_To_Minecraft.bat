@@ -5,25 +5,25 @@ set baseOutputPath=%~dp0
 
 :LOOP
 for %%a in (%1) do set outputDir=%appdata%\.minecraft\saves\%%~nxa_world\
-echo Source is "%1"
+echo Source is "%1\"
 echo Destination is "%outputDir%"
 echo.
 
 
 :OVERWORLD
-if not exist "%~1\world" goto OVERWORLD_NOT_FOUND
+if not exist "%~1\world\\" goto OVERWORLD_NOT_FOUND
 echo Copying "overworld" folder recursively 
-robocopy "%~1\world" "%outputDir%" /S > nul
+robocopy "%~1\world\\" "%outputDir%\" /S > nul
 
 :NETHER
-if not exist "%~1\world_nether\DIM-1\" goto NETHER_NOT_FOUND
+if not exist "%~1\world_nether\DIM-1\\" goto NETHER_NOT_FOUND
 echo Copying "nether" folder recursively
-robocopy "%~1/world_nether/DIM-1/" "%outputDir%\DIM-1" /S > nul
+robocopy "%~1\world_nether\DIM-1\\" "%outputDir%\DIM-1\\" /S > nul
 
 :THE_END
-if not exist "%~1\world_the_end\DIM1\" goto THE_END_NOT_FOUND
+if not exist "%~1\world_the_end\DIM1\\" goto THE_END_NOT_FOUND
 echo Copying "the end" folder recursively
-robocopy "%~1\world_the_end\DIM1\" "%outputDir%\DIM1" /S > nul
+robocopy "%~1\world_the_end\DIM1\\" "%outputDir%\DIM1\\" /S > nul
 echo.
 
 
